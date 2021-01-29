@@ -33,9 +33,9 @@ public class TaskProcess {
         Query query = session.createQuery(cq);
 
         List<Task> tasks = query.getResultList();
+            session.close();
 
-
-        return null;
+        return tasks;
     }
 
 }
