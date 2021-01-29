@@ -43,10 +43,13 @@ public class JDBCConnect {
                 task.setPriority(rs.getInt("priority"));
                 tasks.add(task);
             }
+
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
         tasks.forEach(System.out::println);
+
+
 
     }
 
