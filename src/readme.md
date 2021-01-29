@@ -1,0 +1,1 @@
+Statrt test JDBC connection
