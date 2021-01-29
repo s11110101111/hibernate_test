@@ -14,7 +14,7 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <!--<mapping class="com"/>
-        <mapping class="com"/>-->
+        <mapping class="com.example.hibernate.pojo.Task"/>
+        <mapping class="com.example.hibernate.pojo.Owner"/>
     </session-factory>
 </hibernate-configuration>

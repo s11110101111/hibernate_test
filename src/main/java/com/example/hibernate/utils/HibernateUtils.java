@@ -30,7 +30,7 @@ public class HibernateUtils {
     }
 
 
-    public SessionFactory getSessionFactory() {
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
