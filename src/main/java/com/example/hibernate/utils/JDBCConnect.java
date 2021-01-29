@@ -43,6 +43,11 @@ public class JDBCConnect {
                 task.setPriority(rs.getInt("priority"));
                 tasks.add(task);
             }
+
+            //close all , good practice)
+            rs.close();
+            query.close();
+            cn.close();
         } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
