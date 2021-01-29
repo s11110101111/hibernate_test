@@ -3,7 +3,6 @@ package com.example.hibernate.utils;
 import com.example.hibernate.pojo.TaskClass;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -46,8 +45,8 @@ public class JDBCConnect {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
         }
         tasks.forEach(System.out::println);
 
