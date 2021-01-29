@@ -23,7 +23,7 @@ public class Task implements Serializable {
 
     private int priority;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="id")
+    @JoinColumn(name="owner_id_foreign")//field table with foreign key // id owner
     private Owner owner;
 
     public Task() {

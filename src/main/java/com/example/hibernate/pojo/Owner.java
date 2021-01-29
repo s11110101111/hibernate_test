@@ -11,15 +11,16 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
-@Table(name="owner_table")
+@Table(name = "owner_table")
 public class Owner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "owner_name")
     private String name;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner")//  field  in Task.class
     private Set<Task> tasks;
 
     public Owner() {
@@ -65,7 +66,6 @@ public class Owner implements Serializable {
         return "Owner{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", tasks=" + tasks.toString() +
                 '}';
     }
 }
