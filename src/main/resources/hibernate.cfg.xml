@@ -13,8 +13,13 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--validate|update|create|create-drop -->
 
-        <mapping class="com.example.hibernate.pojo.Task"/>
-        <mapping class="com.example.hibernate.pojo.Owner"/>
+        <!--<mapping class="com.example.hibernate.pojo.Task"/>
+        <mapping class="com.example.hibernate.pojo.Owner"/>-->
+
+        <mapping class="com.example.hibernate.entities.Department"/>
+        <mapping class="com.example.hibernate.entities.Employee"/>
+
     </session-factory>
 </hibernate-configuration>
