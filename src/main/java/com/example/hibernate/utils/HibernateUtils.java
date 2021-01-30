@@ -1,11 +1,9 @@
 package com.example.hibernate.utils;
 
 import org.hibernate.SessionFactory;
-
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -35,8 +33,6 @@ public class HibernateUtils {
     public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
-
-
 
     public static Date getDateFormat(String stringFormatToDate) {
 
