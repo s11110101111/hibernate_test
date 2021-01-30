@@ -17,11 +17,11 @@ import java.util.Set;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column("dept_id")
+    @Column(name="dept_id")
     private Integer departmentId;
-    @Column("dept_name")
+    @Column(name="dept_name")
     private String departmentName;
-    @Column("dept_location")
+    @Column(name="dept_location")
     private String departmentLocation;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "department")
     //to field into class employee

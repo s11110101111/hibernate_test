@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.criteria.CriteriaBuilder;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,13 +17,13 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private Integer employeeId
+    private Integer employeeId;
     @Column(name = "employee_name", length = 70, nullable = false)
     private String employeeName;
     @Column(name = "employee_date_ofjoin")
-    private Date employeeDateOfJoin;
+    private Date dateOfJoin;
     @Column(name = "employee_salary")
-    private Long salary;
+    private Double salary;
     @Column(name = "employee_bonus")
     private BigDecimal bonus;
     @Column(name = "employee_email",length = 50,nullable = false,unique = true)
@@ -49,19 +48,19 @@ public class Employee {
         this.employeeName = employeeName;
     }
 
-    public Date getEmployeeDateOfJoin() {
-        return employeeDateOfJoin;
+    public Date getDateOfJoin() {
+        return dateOfJoin;
     }
 
-    public void setEmployeeDateOfJoin(Date employeeDateOfJoin) {
-        this.employeeDateOfJoin = employeeDateOfJoin;
+    public void setDateOfJoin(Date employeeDateOfJoin) {
+        this.dateOfJoin = employeeDateOfJoin;
     }
 
-    public Long getSalary() {
+    public Double getSalary() {
         return salary;
     }
 
-    public void setSalary(Long salary) {
+    public void setSalary(Double salary) {
         this.salary = salary;
     }
 
@@ -94,7 +93,7 @@ public class Employee {
         return "Employee{" +
                 "employeeId=" + employeeId +
                 ", employeeName='" + employeeName + '\'' +
-                ", employeeDateOfJoin=" + employeeDateOfJoin +
+                ", employeeDateOfJoin=" + dateOfJoin +
                 ", salary=" + salary +
                 ", bonus=" + bonus +
                 ", email='" + email + '\'' +
