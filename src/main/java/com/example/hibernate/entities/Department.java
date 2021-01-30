@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.HashSet;
@@ -14,6 +16,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "department_table")
+@NamedNativeQueries(value = {
+        @NamedNativeQuery(name = "getDept.byId",query="select * from department_table "
+                +"where dept_id = :byId",resultClass = Department.class )
+        }
+)
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

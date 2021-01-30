@@ -14,7 +14,8 @@ public class NamedQueryTest {
     public static void main(String[] args) {
         // SetDataClientToTestDB.initDb();
         //getEmployeeById(2);
-        getTotalSalaryOfEmployeeByDept(0D);
+      //  getTotalSalaryOfEmployeeByDept(0D);
+        getDepartmentById(1);
     }
 
     public static void getEmployeeById(int emplId) {
@@ -35,8 +36,23 @@ public class NamedQueryTest {
 
     }
 
-    public static void getDepartmenById() {
+    public static void getDepartmentById(int byId) {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSessionFactory().openSession();
+       // Query<Department> query = session.getNamedQuery("Department.byId");
+            Query<Department> query = session.getNamedQuery("getDept.byId");
+        query.setParameter("byId",byId);
+        Department dept = query.uniqueResult();
+            System.out.println(dept);
 
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
 
     }
 
