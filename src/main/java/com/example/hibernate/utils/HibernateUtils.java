@@ -1,13 +1,12 @@
 package com.example.hibernate.utils;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataBuilder;
+
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.boot.registry.internal.StandardServiceRegistryImpl;
-import org.hibernate.service.internal.StandardSessionFactoryServiceInitiators;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -39,17 +38,16 @@ public class HibernateUtils {
 
 
 
-    public static Date getDateFormat(String stringFormatDate) {
+    public static Date getDateFormat(String stringFormatToDate) {
 
         // convert end return format date
         Date dateResult = null;
 
+
         try {
-            SimpleDateFormat sDate = new SimpleDateFormat("dd/MM/yyyy");
-
-            dateResult = getDateFormat(stringFormatDate);
-
-        } catch (Exception e) {
+        SimpleDateFormat sDate = new SimpleDateFormat("dd/MM/yyyy");
+            dateResult = sDate.parse(stringFormatToDate);
+            } catch (ParseException e) {
             e.printStackTrace();
         }
 
