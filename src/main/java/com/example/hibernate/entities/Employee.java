@@ -22,7 +22,9 @@ import java.util.Date;
                 +"where employee_id = :byId", resultClass = Employee.class),
         @NamedNativeQuery(name = "Department.byId", query="select * from department_table "
         +"where dept_id = :byId", resultClass = Department.class),
-        @NamedNativeQuery(name ="getTotalSalaryOfEmployeeByDept",query = "")
+        @NamedNativeQuery(name ="getTotalSalaryOfEmployeeByDept",query = "select dept.dept_name as deptname, "
+                +"SUM(emp.employee_salary) from department_table dept left join employee_table emp "
+               +"on dept.dept_id = emp.dept_id group by dept.dept_id having sum(emp.employee_salary)>:bySum")
 })
 public class Employee {
     @Id
