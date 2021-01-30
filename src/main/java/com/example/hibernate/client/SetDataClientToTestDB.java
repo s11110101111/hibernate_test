@@ -14,13 +14,14 @@ import static com.example.hibernate.utils.HibernateUtils.getDateFormat;
 public class SetDataClientToTestDB {
     public static void main(String[] args) {
 
-        SessionFactory sf= HibernateUtils.getSessionFactory();
-        initDb(sf);
+
+        initDb();
 
     }
 
-    private static void initDb(SessionFactory sf) {
+    public  static void initDb() {
         Session session = null;
+        SessionFactory sf= HibernateUtils.getSessionFactory();
         try {
            session = sf.openSession();
            // open transaction

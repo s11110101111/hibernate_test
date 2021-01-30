@@ -63,9 +63,8 @@ public class Department {
     public String toString() {
         return "Department{" +
                 "departmentId=" + departmentId +
-                ", departmentName='" + departmentName + '\'' +
-                ", departmentLocation='" + departmentLocation + '\'' +
-                ", employees=" + employees +
-                '}';
+                ",\ndepartmentName='" + departmentName + '\'' +
+                ",\ndepartmentLocation='" + departmentLocation + '\'' +
+                                '}';
     }
 }

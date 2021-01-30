@@ -1,5 +1,7 @@
 package com.example.hibernate.entities;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
 @Table(name = "employee_table")
+@NamedNativeQueries(value ={
+        @NamedNativeQuery(name="Employee.byId", query = "select * from employee_table "
+                +"where employee_id = :byId", resultClass = Employee.class),
+        @NamedNativeQuery(name = "Department.byId", query="select * from department_table "
+        +"where dept_id = :byId", resultClass = Department.class),
+        @NamedNativeQuery(name ="getTotalSalaryOfEmployeeByDept",query = "")
+})
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +40,7 @@ public class Employee {
     @Column(name = "employee_email",length = 50,nullable = false,unique = true)
     private String email;
     @ManyToOne
-    @JoinColumn(name = "dept_id")
+    @JoinColumn(name = "dept_id") // work without this annotation
     private Department department;
 
     public Integer getEmployeeId() {
@@ -92,12 +103,12 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "employeeId=" + employeeId +
-                ", employeeName='" + employeeName + '\'' +
-                ", employeeDateOfJoin=" + dateOfJoin +
-                ", salary=" + salary +
-                ", bonus=" + bonus +
-                ", email='" + email + '\'' +
-                ", department=" + department +
+                ",\n employeeName='" + employeeName + '\'' +
+                ",\n dateOfJoin=" + dateOfJoin +
+                ",\n salary=" + salary +
+                ",\n bonus=" + bonus +
+                ",\n email='" + email + '\'' +
+                ",\n    department=" + department +
                 '}';
     }
 }
