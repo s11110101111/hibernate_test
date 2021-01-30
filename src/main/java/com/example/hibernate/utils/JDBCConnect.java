@@ -44,7 +44,7 @@ public class JDBCConnect {
                 tasks.add(task);
             }
 
-            //close all , good practice)
+          //close all , good practice)
             rs.close();
             query.close();
             cn.close();
@@ -52,6 +52,8 @@ public class JDBCConnect {
             e.printStackTrace();
         }
         tasks.forEach(System.out::println);
+
+
 
     }
 
