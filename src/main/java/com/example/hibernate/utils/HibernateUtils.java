@@ -12,22 +12,31 @@ public class HibernateUtils {
     // begin with SessionFactory
     private static SessionFactory sessionFactory;
 
-    static {
+        static {
         //create static init factory
-        final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure()
-                .build();
-        try {
-            sessionFactory = new MetadataSources(registry)
-                    .buildMetadata()
-                    .buildSessionFactory();
-        } catch (Exception e) {
-            e.printStackTrace();
-            StandardServiceRegistryBuilder.destroy(registry);
+
+
+            if (sessionFactory==null) {
+                //
+                final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
+                        .configure()
+                        .build();
+                try {
+                   // bild sessionFactory
+                    sessionFactory = new MetadataSources(registry)
+                            .buildMetadata()
+                            .buildSessionFactory();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    if (registry!=null) {
+                        StandardServiceRegistryBuilder.destroy(registry);
+                    }
+                }
+            }
+
+
         }
 
-
-    }
 
 
     public static SessionFactory getSessionFactory() {
