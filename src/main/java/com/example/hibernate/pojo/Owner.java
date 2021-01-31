@@ -1,13 +1,18 @@
 package com.example.hibernate.pojo;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,7 +26,9 @@ public class Owner implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "owner")//  field  in Task.class
-    private Set<Task> tasks;
+    @LazyCollection(LazyCollectionOption.EXTRA)//толко для упорядочных коллекций
+    @OrderColumn(name = "owner_index") // Index necessary to know which element to lazy-init!
+    private Set<Task> tasks = new HashSet<>();;
 
     public Owner() {
     }
@@ -63,9 +70,19 @@ public class Owner implements Serializable {
 
     @Override
     public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("{ ");
+        tasks.forEach(f-> sb.append("[task name= ")
+                .append(f.getTaskName())
+                .append(" priority ")
+                .append(f.getPriority())
+                .append("]"));
+        sb.append("}");
+
         return "Owner{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                "Tasks " + sb +
                 '}';
     }
 }
