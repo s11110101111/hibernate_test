@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks_new_table")
@@ -21,9 +22,12 @@ public class Task implements Serializable {
     @Column(name = "task_name")
     private String taskName;
 
+    private LocalDateTime createdDate;
+
     private int priority;
     @ManyToOne()
     private Owner owner;
+
 
     public int getId() {
         return id;
@@ -55,6 +59,14 @@ public class Task implements Serializable {
 
     public void setOwner(Owner owner) {
         this.owner = owner;
+    }
+
+    public LocalDateTime getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(LocalDateTime createdDate) {
+        this.createdDate = createdDate;
     }
 
     @Override

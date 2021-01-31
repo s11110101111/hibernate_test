@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.time.LocalDateTime;
+
 public class Main {
     public static void main(String[] args) {
         Owner owner = new Owner();
@@ -24,10 +26,12 @@ public class Main {
         Task task = new Task();
         task.setTaskName("GOO");
         task.setPriority(12);
+        task.setCreatedDate(LocalDateTime.now());
         task.setOwner(owner);
             insertTask(task);
         Task task1 = new Task();
         task1.setTaskName("come on GOO");
+        task1.setCreatedDate(LocalDateTime.now());
         task1.setPriority(1);
         task1.setOwner(owner);
         insertTask(task1);
