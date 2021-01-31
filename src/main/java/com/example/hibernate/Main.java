@@ -2,7 +2,6 @@ package com.example.hibernate;
 
 import com.example.hibernate.pojo.Owner;
 import com.example.hibernate.pojo.Task;
-import com.example.hibernate.utils.TaskProcess;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,14 +24,14 @@ public class Main {
 
         Task task = new Task();
         task.setTaskName("GOO");
-        task.setPriority(12);
+        task.setPriority(Priority.MEDIUM);
         task.setCreatedDate(LocalDateTime.now());
         task.setOwner(owner);
             insertTask(task);
         Task task1 = new Task();
         task1.setTaskName("come on GOO");
         task1.setCreatedDate(LocalDateTime.now());
-        task1.setPriority(1);
+        task1.setPriority(Priority.HIGHEST);
         task1.setOwner(owner);
         insertTask(task1);
 

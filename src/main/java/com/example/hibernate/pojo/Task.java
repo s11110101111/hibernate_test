@@ -1,5 +1,7 @@
 package com.example.hibernate.pojo;
 
+import com.example.hibernate.Priority;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +26,8 @@ public class Task implements Serializable {
 
     private LocalDateTime createdDate;
 
-    private int priority;
+    private Priority priority;
+
     @ManyToOne()
     private Owner owner;
 
@@ -45,11 +48,11 @@ public class Task implements Serializable {
         this.taskName = taskName;
     }
 
-    public int getPriority() {
+    public Priority getPriority() {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(Priority priority) {
         this.priority = priority;
     }
 
