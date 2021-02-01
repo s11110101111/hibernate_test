@@ -26,23 +26,10 @@ public class Owner implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "owner")//  field  in Task.class
-    @LazyCollection(LazyCollectionOption.EXTRA)//толко для упорядочных коллекций
-    @OrderColumn(name = "owner_index") // Index necessary to know which element to lazy-init!
+   // @LazyCollection(LazyCollectionOption.EXTRA)//толко для упорядочных коллекций
+   // @OrderColumn(name = "owner_index") // Index necessary to know which element to lazy-init!
     private Set<Task> tasks = new HashSet<>();;
 
-    public Owner() {
-    }
-
-    public Owner(int id, String name, Set<Task> tasks) {
-        this.id = id;
-        this.name = name;
-        this.tasks = tasks;
-    }
-
-    public Owner(String name, Set<Task> tasks) {
-        this.name = name;
-        this.tasks = tasks;
-    }
 
     public int getId() {
         return id;
